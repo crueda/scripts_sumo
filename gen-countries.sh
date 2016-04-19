@@ -20,7 +20,7 @@ for index,row in enumerate(file_in):
 		country = row[0]
 		code = row [1]
 
-		file_out.writelines('languageEntry.put("UA",new LanguageEntryDto("UA",Arrays.asList(\n')
+		file_out.writelines('languageEntry.put("' + str(code) + '",new LanguageEntryDto("' + str(code) + '",Arrays.asList(\n')
 		file_out.writelines('new LanguageValueDto("' + str(code) + '","' + str(country) + '","ru"),\n')
 		file_out.writelines('new LanguageValueDto("' + str(code) + '","' + str(country) + '","pt"),\n')
 		file_out.writelines('new LanguageValueDto("' + str(code) + '","' + str(country) + '","en"),\n')
