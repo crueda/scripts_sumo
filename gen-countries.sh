@@ -10,5 +10,28 @@ import os
 import sys
 import csv
 
-fichero_end = open('/var/www/statusend.html', 'rb')
-fichero_index = open('/var/www/index.html', 'w')
+
+file_in = csv.reader(open('./countries.txt','rb'))
+
+file_out = open('./out.txt', 'w')
+
+for index,row in enumerate(file_in):
+	try:
+		country = row[0]
+		code = row [1]
+
+		file_out.writelines('languageEntry.put("UA",new LanguageEntryDto("UA",Arrays.asList(\n')
+		file_out.writelines('new LanguageValueDto("' + str(code) + '","' + str(country) + '","ru"),\n')
+		file_out.writelines('new LanguageValueDto("' + str(code) + '","' + str(country) + '","pt"),\n')
+		file_out.writelines('new LanguageValueDto("' + str(code) + '","' + str(country) + '","en"),\n')
+		file_out.writelines('new LanguageValueDto("' + str(code) + '","' + str(country) + '","es"),\n')
+		file_out.writelines('new LanguageValueDto("' + str(code) + '","' + str(country) + '","fr"),\n')
+		file_out.writelines('new LanguageValueDto("' + str(code) + '","' + str(country) + '","de"))));\n')
+		file_out.writelines('\n')
+
+
+
+	except:
+		pass
+
+file_out.close()
